@@ -1,4 +1,5 @@
 import axios from "axios"
+const url = "https://ragokan-mern.herokuapp.com/api"
 
 const getUserAction = (token, setToken, setUser, addAlert, setLoading) => {
   setLoading(true)
@@ -13,7 +14,7 @@ const getUserAction = (token, setToken, setUser, addAlert, setLoading) => {
     return
   }
   axios
-    .get("/getuser", config)
+    .get(url + "/getuser", config)
     .then((res) => {
       setUser(res.data)
       addAlert("Logged in succesfully!", "success")
@@ -43,7 +44,7 @@ const logoutAction = (setToken, setUser, addAlert, setLoading) => {
   }
 
   axios
-    .post("/logout")
+    .post(url + "/logout")
     .then(() => {
       reset().then(() => {
         addAlert(
@@ -62,7 +63,7 @@ const logoutAction = (setToken, setUser, addAlert, setLoading) => {
 const loginAction = (user, setToken, addAlert, setLoading) => {
   setLoading(true)
   axios
-    .post("/login", user)
+    .post(url + "/login", user)
     .then((res) => {
       setToken(res.data)
       addAlert("Logged in succesfully, Welcome back!", "success")
@@ -78,7 +79,7 @@ const loginAction = (user, setToken, addAlert, setLoading) => {
 const registerAction = (user, setToken, addAlert, setLoading) => {
   setLoading(true)
   axios
-    .post("/register", user)
+    .post(url + "/register", user)
     .then((res) => {
       setToken(res.data)
       addAlert("Registered successfully!, Welcome here :)", "success")
