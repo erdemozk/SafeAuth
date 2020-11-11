@@ -12,6 +12,7 @@ import Dashboard from "../layout/Dashboard"
 import Navbar from "../layout/Navbar"
 import Profile from "../user/Profile"
 import AlertHolder from "../utils/AlertHolder"
+import Spinner from "../utils/Spinner"
 import { AuthContext } from "../../context/AuthContext"
 
 const Routes = () => {
@@ -20,6 +21,7 @@ const Routes = () => {
     <>
       <Router>
         <Navbar user={user} />
+        <Spinner />
         <AlertHolder />
         <div className="container">
           <Switch>
