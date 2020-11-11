@@ -1,12 +1,13 @@
-const jwt = require("jsonwebtoken")
-const BadToken = require("../models/BadToken")
+import jwt from "jsonwebtoken"
+import BadToken from "../models/BadToken.js"
 
-module.exports = async function auth(req, res, next) {
+async function auth(req, res, next) {
   const token = req.header("auth-token")
   if (!token) return res.status(401).send("You have to login to see this page!")
 
   const checkToken = await BadToken.findOne({ token })
-  if (checkToken) return res.status(401).send("User already log out, so you can't do it!")
+  if (checkToken)
+    return res.status(401).send("User already log out, so you can't do it!")
 
   try {
     const verifiedUser = jwt.verify(token, process.env.JWT_SECRET)
@@ -16,3 +17,5 @@ module.exports = async function auth(req, res, next) {
     res.status(400).send("Your account is not eligible too see this content!")
   }
 }
+
+export default auth

@@ -1,11 +1,14 @@
-const router = require("express").Router()
-
-const User = require("../models/User")
-const auth = require("../middleware/auth")
+import express from "express"
+import User from "../models/User.js"
+import auth from "../middleware/auth.js"
+const router = express.Router()
 
 router.get("/", auth, async (req, res) => {
-  const user = await User.findById(req.user.id).select(["-password", "-logintoken"])
+  const user = await User.findById(req.user.id).select([
+    "-password",
+    "-logintoken",
+  ])
   res.status(200).json(user)
 })
 
-module.exports = router
+export default router

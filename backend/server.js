@@ -1,22 +1,27 @@
-const express = require("express")
+import express from "express"
 const app = express()
 
 app.use(express.json())
 
 // ENV
-const dotenv = require("dotenv")
+import dotenv from "dotenv"
 dotenv.config()
 
 // MongoDB
-const mongoose = require("mongoose")
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, () =>
-  console.log("Connected to the database!")
+import mongoose from "mongoose"
+mongoose.connect(
+  process.env.MONGO_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  () => console.log("Connected to the database!")
 )
 
 // Routes
-app.use("/api/register", require("./routes/Register.js"))
-app.use("/api", require("./routes/Loginout"))
-app.use("/api/getuser", require("./routes/GetUser"))
+import Register from "./routes/Register.js"
+import Loginout from "./routes/Loginout.js"
+import GetUser from "./routes/GetUser.js"
+app.use("/api/register", Register)
+app.use("/api", Loginout)
+app.use("/api/getuser", GetUser)
 
 // Connect
 const PORT = process.env.PORT || 8000

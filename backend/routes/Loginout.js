@@ -1,9 +1,9 @@
-const router = require("express").Router()
+import express from "express"
+import User from "../models/User.js"
+import auth from "../middleware/auth.js"
+const router = express.Router()
 
-const User = require("../models/User")
-const auth = require("../middleware/auth")
-
-const loginValidation = require("../validation/loginValidation")
+import loginValidation from "../validation/loginValidation.js"
 
 router.post("/login", async (req, res) => {
   // Validate The Request
@@ -40,4 +40,4 @@ router.post("/logout", auth, async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

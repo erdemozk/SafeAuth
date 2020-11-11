@@ -1,11 +1,11 @@
 @port = http://127.0.0.1:8000/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWI3ZGRjNzkzOWJiMTFiMGQyOTcxNyIsImlhdCI6MTYwNTA3NDM5NiwiZXhwIjozMTcxNDk1MTY3OTZ9.3XPlKM696Mm9-VhDOJhbgbTkj_soHzN-TLbh8kESqbQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWI4MTIxMWViNjFkMjIyY2RkYTJmMCIsImlhdCI6MTYwNTA3NTIzMywiZXhwIjozMTcxNDk1MTc2MzN9.4laEXeMJhirlgsJSMbBjKA4b-gw6NqAiRACdlikzQaQ
 
 POST {{port}}/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "email" : "okan12@gmail.com",
+    "email" : "okan123@gmail.com",
     "password" : "123456789",
     "fullname" : "OKAN YILDIRIM"
 }
@@ -14,7 +14,7 @@ POST {{port}}/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email" : "okan1@gmail.com",
+    "email" : "okan123@gmail.com",
     "password" : "123456789"
 }
 ###

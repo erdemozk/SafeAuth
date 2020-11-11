@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
+import mongoose from "mongoose"
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
 const User = new mongoose.Schema({
   email: {
@@ -54,7 +54,7 @@ User.methods.getToken = function () {
 }
 
 // Logout
-const BadToken = require("./BadToken")
+import BadToken from "./BadToken.js"
 
 User.methods.logout = async function () {
   const token = this.logintoken
@@ -66,4 +66,4 @@ User.methods.logout = async function () {
   }
 }
 
-module.exports = mongoose.model("User", User)
+export default mongoose.model("User", User)

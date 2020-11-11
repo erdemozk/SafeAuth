@@ -1,7 +1,8 @@
-const router = require("express").Router()
+import express from "express"
+import User from "../models/User.js"
+const router = express.Router()
 
-const User = require("../models/User")
-const registerValidation = require("../validation/registerValidation")
+import registerValidation from "../validation/registerValidation.js"
 
 router.post("/", async (req, res) => {
   // Validate The Request
@@ -23,4 +24,4 @@ router.post("/", async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

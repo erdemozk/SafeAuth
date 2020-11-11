@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 const BadToken = new mongoose.Schema({
   token: {},
 })
 
-module.exports = mongoose.model("BadToken", BadToken)
+export default mongoose.model("BadToken", BadToken)
