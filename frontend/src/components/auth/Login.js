@@ -1,11 +1,15 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { AuthContext } from "../../context/AuthContext"
 
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const { loginUser } = useContext(AuthContext)
+
   const loginForm = (e) => {
     e.preventDefault()
+    loginUser({ email, password })
   }
 
   return (
