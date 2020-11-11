@@ -7,10 +7,10 @@ const Dashboard = () => {
   return (
     <>
       {user ? (
-        <div className="card deep-orange hoverable">
+        <div className="card deep-orange hoverable center white-text">
           <br />
-          <h3 className="center white-text">Your Profile</h3>
-          <div className="card-content white-text">
+          <h3>Your Profile</h3>
+          <div className="card-content">
             <span className="card-title">{user.fullname}</span>
             <p>{user.email}</p>
           </div>
@@ -18,9 +18,9 @@ const Dashboard = () => {
         </div>
       ) : (
         <div>
-          <div className="card deep-orange hoverable">
+          <div className="card deep-orange hoverable white-text center">
             <br />
-            <div className="card-content white-text">
+            <div className="card-content">
               <span className="card-title">
                 If you log in, you will see your profile here!
               </span>

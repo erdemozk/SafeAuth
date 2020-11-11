@@ -3,14 +3,10 @@ import React, { createContext, useState } from "react"
 export const LoadingContext = createContext()
 
 const LoadingContextProvider = (props) => {
-  const [loading, setLoadingState] = useState(false)
-
-  function setLoading(status) {
-    setLoadingState(status)
-  }
+  const [userLoading, setUserLoading] = useState(false)
 
   return (
-    <LoadingContext.Provider value={{ loading, setLoading }}>
+    <LoadingContext.Provider value={{ userLoading, setUserLoading }}>
       {props.children}
     </LoadingContext.Provider>
   )

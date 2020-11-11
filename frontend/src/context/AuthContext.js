@@ -12,21 +12,21 @@ export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
   const { addAlert } = useContext(AlertContext)
-  const { setLoading } = useContext(LoadingContext)
+  const { setUserLoading } = useContext(LoadingContext)
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
 
   function registerUser(user) {
-    registerAction(user, setToken, addAlert, setLoading)
+    registerAction(user, setToken, addAlert, setUserLoading)
   }
   function loginUser(user) {
-    loginAction(user, setToken, addAlert, setLoading)
+    loginAction(user, setToken, addAlert, setUserLoading)
   }
   function fetchUser() {
-    getUserAction(token, setToken, setUser, addAlert, setLoading)
+    getUserAction(token, setToken, setUser, addAlert, setUserLoading)
   }
   function logoutUser() {
-    logoutAction(setToken, setUser, addAlert, setLoading)
+    logoutAction(setToken, setUser, addAlert, setUserLoading)
   }
   useEffect(
     () => {

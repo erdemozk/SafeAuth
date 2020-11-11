@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { LoadingContext } from "../../context/LoadingContext"
 
 const Spinner = () => {
-  const { loading } = useContext(LoadingContext)
-  return loading ? (
+  const { userLoading } = useContext(LoadingContext)
+  return userLoading ? (
     <>
       <div className="preloaderBackground"></div>
       <div className="sk-fading-circle">
