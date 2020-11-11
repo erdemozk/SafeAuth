@@ -1,10 +1,14 @@
 import React from "react"
+import Routes from "./components/routing/Routes"
+import ContextProvider from "./ContextProvider"
 
 const App = () => {
   return (
-    <div>
-      <h1>Welcome Here!</h1>
-    </div>
+    <>
+      <ContextProvider>
+        <Routes />
+      </ContextProvider>
+    </>
   )
 }
 
