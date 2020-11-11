@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import PrivateRoute from "./PrivateRoute"
 import Register from "../auth/Register"
@@ -7,12 +7,14 @@ import Dashboard from "../layout/Dashboard"
 import Navbar from "../layout/Navbar"
 import Profile from "../user/Profile"
 import AlertHolder from "../utils/AlertHolder"
+import { AuthContext } from "../../context/AuthContext"
 
 const Routes = () => {
+  const { user } = useContext(AuthContext)
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar user={user} />
         <AlertHolder />
         <div className="container">
           <Switch>

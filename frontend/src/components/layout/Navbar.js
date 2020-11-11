@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 import GuestLinks from "./GuestLinks"
 import UserLinks from "./UserLinks"
 
-const Navbar = () => {
-  const logged = false
+const Navbar = ({ user }) => {
   return (
     <>
       <nav className="deep-orange">
@@ -13,7 +12,7 @@ const Navbar = () => {
             Auth
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            {logged ? <UserLinks /> : <GuestLinks />}
+            {user ? <UserLinks /> : <GuestLinks />}
           </ul>
         </div>
       </nav>
