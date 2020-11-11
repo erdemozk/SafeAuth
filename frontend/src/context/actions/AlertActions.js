@@ -4,7 +4,7 @@ const newAlert = async (message, color, setAlerts, alerts) => {
   await setAlerts([...alerts, alert])
 
   setTimeout(() => {
-    setAlerts([])
+    setAlerts(alerts.filter((currentAlert) => currentAlert.id !== alert.id))
   }, 5000)
 }
 
