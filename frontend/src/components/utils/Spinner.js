@@ -3,11 +3,9 @@ import { LoadingContext } from "../../context/LoadingContext"
 
 const Spinner = () => {
   const { loading } = useContext(LoadingContext)
-
   return loading ? (
     <>
       <div className="preloaderBackground"></div>
-
       <div className="sk-fading-circle">
         <div className="sk-circle1 sk-circle"></div>
         <div className="sk-circle2 sk-circle"></div>

@@ -6,38 +6,34 @@ import {
   loginAction,
 } from "./actions/AuthActions"
 import { AlertContext } from "./AlertContext"
+import { LoadingContext } from "./LoadingContext"
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
   const { addAlert } = useContext(AlertContext)
-
+  const { setLoading } = useContext(LoadingContext)
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
 
   function registerUser(user) {
-    registerAction(user, setToken, addAlert)
+    registerAction(user, setToken, addAlert, setLoading)
   }
-
   function loginUser(user) {
-    loginAction(user, setToken, addAlert)
+    loginAction(user, setToken, addAlert, setLoading)
   }
-
   function fetchUser() {
-    getUserAction(token, setToken, setUser, addAlert)
+    getUserAction(token, setToken, setUser, addAlert, setLoading)
   }
-
   function logoutUser() {
-    logoutAction(setToken, setUser, addAlert)
+    logoutAction(setToken, setUser, addAlert, setLoading)
   }
-
   useEffect(
     () => {
       token && fetchUser()
     },
     /*eslint-disable*/ [token]
   )
-
   return (
     <AuthContext.Provider
       value={{
