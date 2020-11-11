@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { AuthContext } from "../../context/AuthContext"
 
 const Register = () => {
   const [firstName, setFirstName] = useState("")
@@ -6,8 +7,16 @@ const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const { registerUser } = useContext(AuthContext)
+
   const registerForm = (e) => {
     e.preventDefault()
+    const user = {
+      email,
+      password,
+      fullname: firstName + " " + lastName,
+    }
+    registerUser(user)
   }
 
   return (

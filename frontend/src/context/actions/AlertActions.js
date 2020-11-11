@@ -1,7 +1,7 @@
 import alertObject from "../utils/alertObject"
-const newAlert = (message, color, setAlerts, alerts) => {
-  const alert = alertObject(message, color)
-  setAlerts([...alerts, alert])
+const newAlert = async (message, color, setAlerts, alerts) => {
+  const alert = await alertObject(message, color)
+  await setAlerts([...alerts, alert])
 
   setTimeout(() => {
     setAlerts(alerts.filter((currentAlert) => currentAlert.id !== alert.id))
