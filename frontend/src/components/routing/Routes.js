@@ -6,12 +6,14 @@ import Login from "../auth/Login"
 import Dashboard from "../layout/Dashboard"
 import Navbar from "../layout/Navbar"
 import Profile from "../user/Profile"
+import AlertHolder from "../utils/AlertHolder"
 
 const Routes = () => {
   return (
     <>
       <Router>
         <Navbar />
+        <AlertHolder />
         <div className="container">
           <Switch>
             <Route exact path="/" component={Dashboard} />

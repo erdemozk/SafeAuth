@@ -1,0 +1,17 @@
+.mynotify {
+  position: absolute;
+  display: flex;
+  right: 100px;
+  z-index: 100;
+  top: 95px;
+}
+
+@media screen and (max-width: 800px) {
+  .mynotify {
+    right: 5px;
+  }
+}
+
+.godown {
+  margin-bottom: 25px;
+}
