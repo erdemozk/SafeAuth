@@ -1,11 +1,17 @@
 import alertObject from "../utils/alertObject"
-const newAlert = async (message, color, setAlerts, alerts) => {
+const newAlert = async (message, color, dispatch) => {
   const alert = await alertObject(message, color)
-  await setAlerts([...alerts, alert])
+  dispatch({
+    type: "ADD_ALERT",
+    alert,
+  })
 
   setTimeout(() => {
-    setAlerts([])
-  }, 5000)
+    dispatch({
+      type: "REMOVE_ALERT",
+      alert: alert.id,
+    })
+  }, 2000)
 }
 
 export { newAlert }
