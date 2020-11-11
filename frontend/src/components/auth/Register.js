@@ -1,16 +1,26 @@
 import React, { useContext, useState } from "react"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
+import { AlertContext } from "../../context/AlertContext"
 
 const Register = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [passwordConfirm, setPasswordConfirm] = useState("")
 
   const { registerUser } = useContext(AuthContext)
+  const { addAlert } = useContext(AlertContext)
 
   const registerForm = (e) => {
     e.preventDefault()
+    if (password !== passwordConfirm)
+      return addAlert(
+        "Passwords didn't match, please check your password",
+        "danger"
+      )
+
     const user = {
       email,
       password,
@@ -21,7 +31,7 @@ const Register = () => {
 
   return (
     <div>
-      <br />
+      <h4 className="center">Register</h4>
       <div className="row">
         <form className="col s12 center" onSubmit={registerForm}>
           <div className="row">
@@ -76,10 +86,27 @@ const Register = () => {
             </div>
           </div>
 
+          <div className="row">
+            <div className="input-field col s12">
+              <i className="material-icons prefix">lock</i>
+              <input
+                id="passwordConfirm"
+                type="password"
+                className="validate"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+              />
+              <label htmlFor="passwordConfirm">Confirm Password</label>
+            </div>
+          </div>
+
           <button className="waves-effect waves-light btn">
             <i className="material-icons right">send</i>Register
           </button>
         </form>
+      </div>
+      <div className="center">
+        Already have an account ? <Link to="/login">Login</Link>
       </div>
     </div>
   )

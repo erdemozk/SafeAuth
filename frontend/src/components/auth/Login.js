@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
 
   return (
     <div>
-      <br />
+      <h4 className="center">Login</h4>
       <div className="row">
         <form className="col s12 center" onSubmit={loginForm}>
           <div className="row">
@@ -49,6 +50,9 @@ const Login = () => {
             <i className="material-icons right">login</i>Login
           </button>
         </form>
+      </div>
+      <div className="center">
+        Don't have an account ? <Link to="/register">Register</Link>
       </div>
     </div>
   )
