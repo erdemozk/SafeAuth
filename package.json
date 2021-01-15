@@ -1,7 +1,7 @@
 {
-  "name": "recommerce",
+  "name": "safeauth",
   "version": "1.0.0",
-  "description": "An e-commerce app that created by ragokan.",
+  "description": "A safe auth app that created by ragokan.",
   "engines": {
     "node": "14.x"
   },
@@ -13,7 +13,7 @@
     "both": "concurrently \"yarn dev\" \"yarn frontend\""
   },
   "main": "index.js",
-  "repository": "https://github.com/ragokan/recommerce",
+  "repository": "https://github.com/ragokan/SafeAuth",
   "author": "ragokan",
   "license": "MIT",
   "private": false,
