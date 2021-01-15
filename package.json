@@ -6,7 +6,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node backend/index --prefix backend",
+    "start": "node index --prefix backend",
     "dev": "nodemon index --prefix backend",
     "heroku-postbuild": "cd frontend && yarn install && yarn build",
     "frontend": "npm run start --prefix frontend",
