@@ -1,15 +1,23 @@
-import React from "react"
-import Routes from "./components/routing/Routes"
-import ContextProvider from "./ContextProvider"
+import React, { Suspense } from "react";
+import Router from "./components/router/Router";
+import DataHooks from "./components/utils/DataHooks";
+import ErrorBoundary from "./ErrorBoundary";
+import Helmet from "react-helmet";
 
-const App = () => {
+function App() {
   return (
     <>
-      <ContextProvider>
-        <Routes />
-      </ContextProvider>
+      <Helmet>
+        <title>Safe Auth</title>
+      </Helmet>
+      <ErrorBoundary>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <DataHooks />
+          <Router />
+        </Suspense>
+      </ErrorBoundary>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

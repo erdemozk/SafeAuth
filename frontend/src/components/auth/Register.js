@@ -1,115 +1,94 @@
-import React, { useContext, useState } from "react"
-import { Link } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
-import { AlertContext } from "../../context/AlertContext"
+import React from "react";
+import lokaly from "lokaly";
+import { Form, Input, Button } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { RegisterAction } from "../../actions/AuthActions";
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 
-const Register = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [passwordConfirm, setPasswordConfirm] = useState("")
-
-  const { registerUser } = useContext(AuthContext)
-  const { addAlert } = useContext(AlertContext)
-
-  const registerForm = (e) => {
-    e.preventDefault()
-    if (password !== passwordConfirm)
-      return addAlert(
-        "Passwords didn't match, please check your password",
-        "danger"
-      )
-
-    const user = {
+const Register = ({ RegisterAction }) => {
+  const onFinish = ({ name, surname, email, password }) =>
+    RegisterAction({
+      fullname: name + " " + surname,
       email,
       password,
-      fullname: firstName + " " + lastName,
-    }
-    registerUser(user)
-  }
-
+    });
   return (
-    <div>
-      <h4 className="center">Register</h4>
-      <div className="row">
-        <form className="col s12 center" onSubmit={registerForm}>
-          <div className="row">
-            <div className="input-field col s6">
-              <i className="material-icons prefix">person</i>
-              <input
-                id="first_name"
-                type="text"
-                className="validate"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <label htmlFor="first_name">First Name</label>
-            </div>
-            <div className="input-field col s6">
-              <input
-                id="last_name"
-                type="text"
-                className="validate"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <label htmlFor="last_name">Last Name</label>
-            </div>
+    <>
+      <Helmet>
+        <title>Safe Auth - Register</title>
+      </Helmet>
+      <div className="block">
+        <div className="container-fluid">
+          <div className="titleHolder">
+            <h2>{lokaly("register")}</h2>
           </div>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <i className="material-icons prefix">email</i>
-              <input
-                id="email"
+          <Form
+            name="normal_login"
+            className="login-form"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+          >
+            <Form.Item style={{ marginBottom: 0 }}>
+              <Form.Item
+                name="name"
+                rules={[{ required: true, message: lokaly("nameRule") }]}
+                style={{ display: "inline-block", width: "calc(50% - 8px)" }}
+              >
+                <Input placeholder={lokaly("name")} type="text" />
+              </Form.Item>
+              <Form.Item
+                name="surname"
+                rules={[{ required: true, message: lokaly("surnameRule") }]}
+                style={{
+                  display: "inline-block",
+                  width: "calc(50% - 8px)",
+                  margin: "0 8px",
+                }}
+              >
+                <Input placeholder={lokaly("surname")} type="text" />
+              </Form.Item>
+            </Form.Item>
+
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: lokaly("emailRule") }]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Email"
                 type="email"
-                className="validate"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="email">Email</label>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="input-field col s12">
-              <i className="material-icons prefix">lock</i>
-              <input
-                id="password"
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: lokaly("passwordRule") }]}
+            >
+              <Input
+                prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
-                className="validate"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                placeholder={lokaly("password")}
               />
-              <label htmlFor="password">Password</label>
-            </div>
-          </div>
+            </Form.Item>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <i className="material-icons prefix">lock</i>
-              <input
-                id="passwordConfirm"
-                type="password"
-                className="validate"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
-              />
-              <label htmlFor="passwordConfirm">Confirm Password</label>
-            </div>
-          </div>
-
-          <button className="waves-effect waves-light btn">
-            <i className="material-icons right">send</i>Register
-          </button>
-        </form>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                {lokaly("register")}
+              </Button>
+              <br />
+              {lokaly("or")} <Link to="/login">{lokaly("loginNow")}</Link>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
-      <div className="center">
-        Already have an account ? <Link to="/login">Login</Link>
-      </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Register
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = { RegisterAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

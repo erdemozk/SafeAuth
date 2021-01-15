@@ -1,24 +1,15 @@
-# Safe Auth System For Mern as Boilerplate
+# R/E-Commerce
+### You can check it by going -> https://r-ecommerce.herokuapp.com/
 
-#### Tecnologies
+## Tech Stack
 
 - React
+- Redux
+- Axios
+- Mongoose
 - Express
-- MongoDB (Main Storage)
 
-#### How to Use
+## How To Use
 
-##### Backend
-
-- Create a file called '.env'
-- Include bottom 3 lines with your '.env' file
-
-  <code>
-  JWT_EXPIRE = 9999 Years // Or your preferenced expire <br/>
-  JWT_SECRET = secretkey // You can write anything here <br/>
-  MONGO_URI = yourMongoURI // You can use localhost or from mongodb.
-  </code>
-
-##### Final
-
-- In backend and frontend, run "yarn start" or "npm run start"
+- For backend, create a '.env' file, copy everything from example.env and paste, just give your variables.
+- For frontend, update the Config.js file with your variables, you can also check ConfigForGithub.js.
