@@ -7,14 +7,11 @@
   },
   "scripts": {
     "start": "node backend/index.js",
-    "dev": "nodemon index --prefix backend",
-    "heroku-postbuild": "cd frontend && yarn install && yarn build",
-    "frontend": "npm run start --prefix frontend",
-    "both": "concurrently \"yarn dev\" \"yarn frontend\""
+    "dev": "nodemon index --prefix backend"
   },
   "main": "index.js",
-  "repository": "https://github.com/ragokan/SafeAuth",
-  "author": "ragokan",
+  "repository": "https://github.com/erdemozk/SafeAuth",
+  "author": "erdemozk",
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -31,6 +28,7 @@
     "joi": "^17.3.0",
     "joi-objectid": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.4",
     "mongoose": "^5.11.9"
   },
   "type": "module"
