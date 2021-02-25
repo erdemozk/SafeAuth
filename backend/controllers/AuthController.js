@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import Async from "../middleware/Async.js";
-import RegisterValidation from "../validation/RegisterValidation.js";
+import RegisterValidation from "../validation/registerValidation.js";
 import LoginValidation from "../validation/LoginValidation.js";
 import ErrorObject from "../utils/ErrorObject.js";
 
