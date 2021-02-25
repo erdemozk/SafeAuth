@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import Async from "../middleware/Async.js";
 import RegisterValidation from "../validation/registerValidation.js";
-import LoginValidation from "../validation/LoginValidation.js";
+import LoginValidation from "../validation/loginValidation.js";
 import ErrorObject from "../utils/ErrorObject.js";
 
 // Post /auth/register
